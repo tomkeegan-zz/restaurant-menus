@@ -1,0 +1,3 @@
+# don't push th file with API keys and such
+config.py
+.vscode/
