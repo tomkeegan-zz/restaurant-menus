@@ -1,4 +1,4 @@
-import config, googlemaps, requests
+import config, googlemaps
 
 gmaps = googlemaps.Client(key=config.api_key)
 
