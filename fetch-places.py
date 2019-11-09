@@ -1,11 +1,15 @@
-import config, googlemaps
+import config, googlemaps, requests
 
-class FetchPlaces():
-    def setUp(self):
-        self.key = config.api_key
-        self.client =  googlemaps.Client(self.key)
-        self.location = (37.791538, -122.417561)
-        self.type = 'restaurant'
-        self.language = 'en-US'
-        self.region = 'US'
-        self.radius = 1
+gmaps = googlemaps.Client(key=config.api_key)
+
+url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json'
+
+location = (37.791531, -122.417573)
+radius = 200
+language = 'en-US'
+type = 'restaurant'
+
+place_ids = gmaps.places_nearby(location=location, radius=radius, language=language, type=type)
+
+for result in place_ids['results']:
+    print(result['name'])

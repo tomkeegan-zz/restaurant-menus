@@ -1,3 +1,4 @@
 # don't push the file with API keys and such
 config.py
 .vscode/
+__pycache__
