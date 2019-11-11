@@ -4,9 +4,9 @@ print('Initializing Google Maps API client...\n')
 gmaps = googlemaps.Client(key=config.api_key)
 
 location = (37.791531, -122.417573)
-radius = 200
 language = 'en-US'
 type = 'restaurant'
+radius = input('Enter range in meters: ')
 
 print('Fetching list of places...\n')
 place_ids = gmaps.places_nearby(location=location, radius=radius, language=language, type=type)
