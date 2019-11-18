@@ -1,6 +1,10 @@
-FROM python:3
-WORKDIR /usr/src/app
-COPY requirements.txt ./
-RUN pip3 install --no-cache-dir -r requirements.txt
+FROM alpine:latest
+WORKDIR /code
+COPY pip3.txt ./
+RUN apk add --no-cache --virtual .build-deps \
+    build-base libffi-dev openssl-dev \
+    libxslt-dev python3-dev && \
+    pip3 install --upgrade pip && \
+    pip3 install --no-cache-dir -r pip3.txt && \
+    apk del .build-deps
 COPY . .
-CMD ["python3", "fetch-websites.py"]
