@@ -3,4 +3,3 @@ config.py
 .vscode/
 __pycache__
 data/websites.txt
-data/metadata.txt
