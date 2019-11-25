@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import scrapy
+import scrapy, subprocess
 from scrapy import Request
 
 class ThaithaigourmetSpider(scrapy.Spider):
@@ -9,12 +9,12 @@ class ThaithaigourmetSpider(scrapy.Spider):
 
     def parse(self, response):
         menu_url = response.css('.logo').xpath('@rel').get()
-        print(menu_url)
-        yield Request(menu_url, callback=self.parse_menu)
+        return_code = subprocess.call(['wget', menu_url, '-O', './data/thaithaigourmet-menu.html'])
+        yield Request("file:///./data/thaithaigourmet-menu.html", callback=self.parse_menu)
         pass  
 
     def parse_menu(self, response):
-        menu_items = response.css('.items_wrapper').xpath('//h4/text()').extract()
+        menu_items = response.css('.items_wrapper').xpath('.//h4/text()').getall()
         print(menu_items)
         yield {
             'menu_items': menu_items
