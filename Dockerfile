@@ -5,5 +5,4 @@ RUN apk add --no-cache \
     libxslt-dev git python3-dev && \
     echo -e "requests\ngooglemaps\nscrapy" > requirements.txt && \
     pip3 install --upgrade pip && \
-    pip3 install --no-cache-dir -r requirements.txt && \
-    git clone https://github.com/tomkeegan/restaurant-menus.git 
+    pip3 install --no-cache-dir -r requirements.txt

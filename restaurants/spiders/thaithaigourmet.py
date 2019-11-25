@@ -13,7 +13,7 @@ class ThaithaigourmetSpider(scrapy.Spider):
         pass  
 
     def parse_menu(self, response):
-        menu_items = response.css('.menu_items/text()').get()
+        menu_items = response.css('.menu_items').get()
         yield {
             'menu_items': menu_items
         }
