@@ -5,4 +5,6 @@ RUN apk add --no-cache \
     libxslt-dev git python3-dev && \
     echo -e "requests\ngooglemaps\nscrapy" > requirements.txt && \
     pip3 install --upgrade pip && \
-    pip3 install --no-cache-dir -r requirements.txt
+    pip3 install --no-cache-dir -r requirements.txt && \
+    git config --global user.email "tomkeegan835@gmail.com" && \
+    git config --global user.name "Tom Keegan"

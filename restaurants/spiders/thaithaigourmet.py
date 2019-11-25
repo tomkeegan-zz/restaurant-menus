@@ -5,7 +5,7 @@ from scrapy import Request
 class ThaithaigourmetSpider(scrapy.Spider):
     name = 'thaithaigourmet'
     allowed_domains = ['www.thaithaigourmet.com/']
-    start_urls = ['http://www.thaithaigourmet.com//']
+    start_urls = ['http://www.thaithaigourmet.com/']
 
     def parse(self, response):
         menu_url = response.xpath('//link/@href').extract_first()
@@ -13,7 +13,7 @@ class ThaithaigourmetSpider(scrapy.Spider):
         pass  
 
     def parse_menu(self, response):
-        menu_items = response.css('.menu_items').get()
+        menu_items = response.css('.items_wrapper').xpath('//h4/text()').get()
         yield {
             'menu_items': menu_items
         }
