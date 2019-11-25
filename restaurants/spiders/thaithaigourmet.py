@@ -8,12 +8,14 @@ class ThaithaigourmetSpider(scrapy.Spider):
     start_urls = ['http://www.thaithaigourmet.com/']
 
     def parse(self, response):
-        menu_url = response.xpath('//link/@href').extract_first()
+        menu_url = response.css('.logo').xpath('@rel').get()
+        print(menu_url)
         yield Request(menu_url, callback=self.parse_menu)
         pass  
 
     def parse_menu(self, response):
-        menu_items = response.css('.items_wrapper').xpath('//h4/text()').get()
+        menu_items = response.css('.items_wrapper').xpath('//h4/text()').extract()
+        print(menu_items)
         yield {
             'menu_items': menu_items
         }
