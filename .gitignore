@@ -4,3 +4,4 @@ config.py
 __pycache__
 data/websites.txt
 data/thaithaigourmet-menu.html
+data/results.json
