@@ -9,13 +9,13 @@ class ThaithaigourmetSpider(scrapy.Spider):
 
     def parse(self, response):
         menu_url = response.css('.logo').xpath('@rel').get()
-        yield Request(menu_url, callback=self.parse_menu)\
-        
+        yield Request(menu_url, callback=self.parse_menu)
         pass  
 
     def parse_menu(self, response):
         menu_items = response.css('.items_wrapper').xpath('.//h4/text()').getall()
-        print(menu_items)
+        for item in menu_items:
+            print(item)
         yield {
             'menu_items': menu_items
         }
