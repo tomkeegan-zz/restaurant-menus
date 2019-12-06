@@ -1,5 +1,6 @@
 FROM alpine:latest
 WORKDIR /code
+COPY ./config.py ./config.py
 RUN apk add --no-cache \
     build-base libffi-dev openssl-dev libxslt \ 
     libxslt-dev git python3-dev && \

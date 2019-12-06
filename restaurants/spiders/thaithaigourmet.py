@@ -9,8 +9,8 @@ class ThaithaigourmetSpider(scrapy.Spider):
 
     def parse(self, response):
         menu_url = response.css('.logo').xpath('@rel').get()
-        return_code = subprocess.call(['wget', menu_url, '-O', './data/thaithaigourmet-menu.html'])
-        yield Request("file:///./data/thaithaigourmet-menu.html", callback=self.parse_menu)
+        yield Request(menu_url, callback=self.parse_menu)\
+        
         pass  
 
     def parse_menu(self, response):
