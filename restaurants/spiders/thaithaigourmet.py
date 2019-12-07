@@ -18,9 +18,9 @@ class ThaithaigourmetSpider(scrapy.Spider):
         for items_wrapper in  items_wrapper_array:
             items = items_wrapper.xpath('a')
             for item in items:
-                name = item.xpath('//h4/text()').extract_first()
-                description = item.xpath('//p/text()').extract_first()
-                price = item.xpath('//td[@class="price"]/text()').extract_first()
+                name = item.xpath('.//h4/text()').get()
+                description = item.xpath('.//p/text()').get()
+                price = item.css('.price::text').get()
                 yield {
                     'name': name,
                     'description': description,

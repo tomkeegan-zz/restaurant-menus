@@ -16,7 +16,7 @@ NEWSPIDER_MODULE = 'restaurants.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'restaurants (+http://www.yourdomain.com)'
+USER_AGENT = 'restaurants (+http://github.com/tomkeegan)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
