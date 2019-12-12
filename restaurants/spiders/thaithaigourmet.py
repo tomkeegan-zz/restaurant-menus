@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy, subprocess
 from scrapy import Request
-from selenium import webdrvier
+from scrapy.selector import Selector
 
 class ThaithaigourmetSpider(scrapy.Spider):
     name = 'thaithaigourmet'
@@ -18,10 +18,11 @@ class ThaithaigourmetSpider(scrapy.Spider):
         items_wrapper_array = response.css('.items_wrapper')
         for items_wrapper in  items_wrapper_array:
             items = items_wrapper.xpath('a')
+            print(items)
             for item in items:
                 name = item.xpath('//h4/text()').get()
-                description = item.xpath('//p/text()').get()
-                price = item.css('.price::text').get()
+                description = item.xpath('//td[@style="width: 80%"]/p/text()').get()
+                price = item.xpath('//td[@class="price"]/text()').get()
                 yield {
                     'name': name,
                     'description': description,
