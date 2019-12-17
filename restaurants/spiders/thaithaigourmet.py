@@ -10,20 +10,16 @@ class ThaithaigourmetSpider(scrapy.Spider):
     start_urls = ['http://www.thaithaigourmet.com/']
 
     def parse(self, response):
-        menu_url = response.css('.logo').xpath('@rel').get()
-        print('\n\n\nRedirecting to ' + menu_url + '\n\n\n')
+        menu_url = response.css('div.logo').attrib['rel']
+        logging.info('Redirecting to ' + menu_url)
         yield Request(menu_url, callback=self.parse_menu)
         pass
 
     def parse_menu(self, response):
-        items = response.xpath('//div[@class="items_wrapper"]/a')
-        for item in items:
+        for item in response.css('div.items_wrapper a'):
             name = item.xpath('//h4/text()').get()
             description = item.xpath('//td[@style="width: 80%"]/p/text()').get()
             price = item.xpath('//td[@class="price"]/text()').get()
-            logging.info(name)
-            logging.info(description)
-            logging.info(price)
             yield {
                 'name': name,
                 'description': description,
