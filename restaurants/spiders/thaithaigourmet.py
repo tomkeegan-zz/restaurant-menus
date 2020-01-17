@@ -19,9 +19,9 @@ class ThaithaigourmetSpider(scrapy.Spider):
         for item in response.css('div.items_wrapper a'):
             logging.info('Menu items scraped: ' + str(count))
             count = count + 1
-            name = item.xpath('//h4/text()').get()
-            description = item.xpath('//td[@style="width: 80%"]/p/text()').get()
-            price = item.xpath('//td[@class="price"]/text()').get()
+            name = item.xpath('./h4/text()').get()
+            description = item.xpath('./td[@style="width: 80%"]/p/text()').get()
+            price = item.xpath('./td[@class="price"]/text()').get()
             yield {
                 'name': name,
                 'description': description,
