@@ -8,5 +8,5 @@ RUN apk add --no-cache \
     pip3 install --upgrade pip && \
     pip3 install --no-cache-dir -r requirements.txt && \
     git config --global user.email "tomkeegan835@gmail.com" && \
-    git config --global user.name "Tom Keegan"
+    git config --global user.name "Tom Keegan" && \
     git config --global url.'https://876439f1bf03a2e443433f2c819c7bb51cd87f0a:x-oauth-basic@github.com/'.inst

@@ -11,7 +11,7 @@ radius = input('Enter range in meters: ')
 print('Fetching list of places...\n')
 place_ids = gmaps.places_nearby(location=location, radius=radius, language=language, type=type)
 
-print('Fetching websites for following restaurants:\n')
+print('Fetching URLs for the following restaurants:\n')
 with open('data/websites.txt', 'w') as fp:
     for result in place_ids['results']:
         details = gmaps.place(result['place_id'])['result']
